@@ -1,0 +1,38 @@
+<ion-menu side="start" type="overlay" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Parrot Secrets</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list id="inbox-list">
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:true}">
+          <ion-label>Feed</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/profile" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:true}">
+          <ion-label>Profile</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/settings" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:true}">
+          <ion-label>Settings</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+
+    <div class="button-container">
+      <button (click)="onLogout()">
+        LOGOUT
+      </button>
+    </div>
+  </ion-content>
+</ion-menu>
+
+
+

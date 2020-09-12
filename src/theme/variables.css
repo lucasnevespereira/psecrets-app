@@ -1,0 +1,14 @@
+/* Ionic Variables and Theming. */
+/* This is just a placeholder file For more info, please see: */
+/* https://ionicframework.com/docs/theming/basics */
+
+/* To quickly generate your own theme, check out the color generator */
+/* https://ionicframework.com/docs/theming/color-generator */
+:root {
+  --ion-background-color:#20254B;
+  --main-bg:#20254B;
+  --main-pink: #942373;
+  --main-white: #EDEDED;
+  --main-dark: #1C152C;
+  --sec-blue: #3881BF;
+}

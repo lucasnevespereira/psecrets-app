@@ -1,0 +1,51 @@
+<main>
+  <div class="logo">
+    <img src="assets/logo.svg" alt="Parrot Logo" />
+    <h3 class="title">Parrot Secrets</h3>
+  </div>
+
+  <form [formGroup]="authForm" (ngSubmit)="onLogin()">
+    <div class="form-switch">
+      <div class="form-switch__item active">
+        <p [routerLink]="['/login']" routerLinkActive="router-link-active">Login</p>
+      </div>
+      <div class="form-switch__item">
+        <p [routerLink]="['/signup']" routerLinkActive="router-link-active">Signup</p>
+      </div>
+    </div>
+     
+    <div class="input-container">
+      <input placeholder="Enter your email" type="email" formControlName="email"
+      [ngClass]="{invalid: email.invalid && !email.pristine}"/>
+      <ng-container *ngIf="email.errors && email.touched"> 
+        <p *ngIf="email.errors.required" class="invalid">
+           Email required.
+        </p> 		   
+        <p *ngIf="email.errors.pattern" class="invalid">
+            Email not valid.
+        </p> 
+      </ng-container> 
+    </div>
+
+    <div class="input-container">
+      <input placeholder="Password" [type]="showPassword ? 'text' : 'password'" formControlName="password" [ngClass]="{invalid: password.invalid && !password.pristine}"/>
+      <img (click)="onClickIcon()" [src]="showPassword ? 'assets/eye-white.svg' : 'assets/hide-white.svg'" alt="eye">
+      <ng-container *ngIf="password.errors && password.touched"> 
+        <p *ngIf="password.errors.required" class="invalid">
+           Password required.
+        </p> 		   
+      </ng-container> 
+    </div>
+    <div class="button-container">
+      <button [disabled]="authForm.invalid" type="submit" class="valid">
+        LOGIN
+      </button>
+    </div>
+
+  </form>
+
+
+  <div class="footer">
+    <span>Made by LNP</span>
+  </div>
+</main>

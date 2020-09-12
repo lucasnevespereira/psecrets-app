@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'theme/variables.css';
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--main-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: 'Quattrocento', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
