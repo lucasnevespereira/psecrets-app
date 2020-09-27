@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FeedComponent } from './secrets/feed/feed.component';
 import { BoxComponent } from './secrets/box/box.component';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BoxComponent } from './secrets/box/box.component';
     HomeRoutingModule,
     IonicModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule
   ]
 })
 export class HomeModule { }

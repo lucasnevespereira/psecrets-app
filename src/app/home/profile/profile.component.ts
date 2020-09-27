@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,10 @@ import { MenuController } from '@ionic/angular';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private authService: AuthService) {
+    console.log(`User: ${this.authService.getUserId()}`);
+    
+  }
 
   ngOnInit() {
     this.menu.close();
