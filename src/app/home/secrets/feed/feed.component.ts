@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SecretsService } from '../../secrets.service';
+import { map } from 'rxjs/operators';
+
 
 
 @Component({
@@ -12,8 +14,11 @@ export class FeedComponent implements OnInit {
   secrets = []
 
   constructor(private secretService: SecretsService) {
-    this.secretService.getAllSecrets().subscribe((res) => {
+    this.secretService.getAllSecrets().pipe(
+      map(s => s.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) ),
+    ).subscribe((res) => {
       this.secrets = res;
+      console.log(`FEEED SECRETS: ${this.secrets}`);
     })
   }
 

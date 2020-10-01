@@ -11,7 +11,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private menu: MenuController, private authService: AuthService) {
     console.log(`User: ${this.authService.getUserId()}`);
-    
   }
 
   ngOnInit() {
