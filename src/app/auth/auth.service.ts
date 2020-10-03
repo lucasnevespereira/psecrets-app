@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient}  from '@angular/common/http'
 import { Subject } from 'rxjs';
+import { SecretsService } from '../home/secrets.service';
 
 export interface AuthData {
   email: string,
@@ -19,7 +20,7 @@ export class AuthService {
   rootUrl: string = "http://localhost:3000/api/auth/"
   private userId: string;
 
-  constructor(private router: Router, private http: HttpClient ) { }
+  constructor(private router: Router, private http: HttpClient, private secretService: SecretsService ) { }
 
   getToken() {
     return this.token;
@@ -123,6 +124,13 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       userId: userId
     }
+  }
+
+ deleteUser(userId: string) {
+    this.http.delete(`${this.rootUrl}${userId}`).subscribe(res => {
+      console.log(res);
+    })
+    this.logout();
   }
 
 }

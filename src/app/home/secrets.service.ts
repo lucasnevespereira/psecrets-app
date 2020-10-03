@@ -35,5 +35,9 @@ export class SecretsService {
     return this.http.delete(`${this.rootUrl}/${secretId}`);
   }
 
+  deleteUserSecrets(userId: string) {
+    return this.http.delete(`${this.rootUrl}/userSecrets/${userId}`).subscribe(res => console.log(res));
+  }
+
 
 }
