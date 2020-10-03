@@ -3,7 +3,8 @@
   <div class="feed">
     <h2>My Secrets </h2>
       <div class="feed__secret" *ngFor="let secret of secrets" >
-        <p> {{ secret.content }} </p>
+        <p>{{ secret.content }}</p>
+        <ion-icon class="delete_icon" name="trash-outline" (click)="presentAlertConfirm(secret._id)"></ion-icon>
       </div>
   </div>
 </section>

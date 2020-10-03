@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { SecretsService } from '../secrets.service';
 
@@ -13,26 +13,42 @@ export class ProfileComponent implements OnInit {
   userId : string;
   secrets = []
 
-  constructor(private menu: MenuController, private authService: AuthService, private secretService: SecretsService) {
+  constructor(private alertController: AlertController ,private menu: MenuController, private authService: AuthService, private secretService: SecretsService) {
     console.log(`User: ${this.authService.getUserId()}`);
   }
 
   ngOnInit() {
     this.menu.close();
     this.userId = this.authService.getUserId();
-    // this.secretService.getAllSecrets().pipe(
-    //   map(s => s.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) ),
-    // ).subscribe((res) => {
-    //   this.secrets = res;
-    //   console.log(`FEEED SECRETS: ${this.secrets}`);
-    // })
-
     this.secretService.getSecretById(this.userId).subscribe((res) => {
       this.secrets = res["secrets"]
       console.log(this.secrets);
     })
   }
 
+
+  async presentAlertConfirm(secretId : string) {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Delete Confirmation',
+      message: 'Are you sure you want delete this secret ? ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+        
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 
 
