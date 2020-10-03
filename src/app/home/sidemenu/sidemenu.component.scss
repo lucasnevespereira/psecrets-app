@@ -15,6 +15,22 @@ ion-item {
   color: var(--main-white);
 }
 
+.sidebar-item {
+  padding-top: 20px; 
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px; 
+  color: var(--main-white);
+  outline: none;
+  border: none;
+ }
+ 
+ .sidebar-item:hover {
+   color: var(--main-white);
+   font-weight: bold;
+ }
+ 
+
 ion-menu-button {
   color: var(--main-white);
 }

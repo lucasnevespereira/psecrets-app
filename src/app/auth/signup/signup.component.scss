@@ -40,7 +40,12 @@ form {
       padding: 5px;
       border-bottom: 1px solid var(--sec-blue);
       border-right: 1px solid var(--sec-blue);
-      color: grey
+      color: grey;
+      outline: none;
+
+      & p:focus {
+        outline: none;
+      }
     }
 
     & .active {
@@ -55,7 +60,7 @@ form {
   .invalid {
     color: red;
     text-align: left;
-    margin-left: 20px;
+    margin-left: 30px;
     font-size: 0.8rem;
   }
 
