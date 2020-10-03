@@ -6,6 +6,11 @@
         <p>{{ secret.content }}</p>
         <ion-icon class="delete_icon" name="trash-outline" (click)="presentAlertConfirm(secret._id)"></ion-icon>
       </div>
+      <ng-container *ngIf="secrets.length === 0">
+        <div class="no-secrets">
+          You have no secrets !
+        </div>
+      </ng-container>
   </div>
 </section>
 </main>

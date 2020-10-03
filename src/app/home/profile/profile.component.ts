@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit {
       this.secrets = res["secrets"]
       console.log(this.secrets);
     })
+    console.log(this.secrets.length);
+    
   }
 
   onDeleteSecret(secretId: string) {
