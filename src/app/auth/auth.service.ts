@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {HttpClient}  from '@angular/common/http'
 import { Subject } from 'rxjs';
 import { SecretsService } from '../home/secrets.service';
+import { environment } from '../../environments/environment'
 
 export interface AuthData {
   email: string,
@@ -17,7 +18,7 @@ export class AuthService {
   private tokenTimer: NodeJS.Timer;
   private authStatusListener = new Subject<boolean>();
   isAuth: boolean = false;
-  rootUrl: string = "http://localhost:3000/api/auth/"
+  rootUrl: string = environment.apiUrl + "/auth/"
   private userId: string;
 
   constructor(private router: Router, private http: HttpClient, private secretService: SecretsService ) { }

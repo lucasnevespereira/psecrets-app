@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'
 
 interface SecretResponse {
   id: string,
@@ -13,7 +14,7 @@ interface SecretResponse {
 })
 export class SecretsService {
   date = new Date(Date.now());
-  rootUrl: string = "http://localhost:3000/api/secret"
+  rootUrl: string = environment.apiUrl + "/secret"
 
   constructor(private http: HttpClient) { }
 
