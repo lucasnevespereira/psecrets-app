@@ -8,8 +8,11 @@
   --ion-background-color:#20254B;
   --main-bg:#20254B;
   --main-pink: #942373;
+  --dark-pink: #500b3d;
   --main-white: #EDEDED;
   --main-dark: #1C152C;
   --sec-blue: #3881BF;
   --ion-color-contrast: #EDEDED;
+  --ion-text-color:#EDEDED;
+  --ion-color-step-550: #EDEDED;
 }

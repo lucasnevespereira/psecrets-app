@@ -24,11 +24,15 @@ export class BoxComponent implements OnInit {
   }
 
   onShare() {
-    const {content} = this.secretForm.value;
-    console.log(content);
-    this.secretService.createSecret(content);
-    this.secretForm.reset();
-    window.location.reload();
+    if(this.secretForm.valid) {
+      const {content} = this.secretForm.value;
+      console.log(content);
+      this.secretService.createSecret(content);
+      this.secretForm.reset();
+      window.location.reload();
+    } else {
+      console.log("Invalid"); 
+    }
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,7 +12,7 @@ export class SidemenuComponent implements OnInit {
 
   @Input() pageName: string;
 
-  constructor(private authService: AuthService, private menu: MenuController) { }
+  constructor(public alertController: AlertController, private authService: AuthService, private menu: MenuController) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +23,29 @@ export class SidemenuComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Logout Confirmation',
+      message: 'Are you sure you want to logout ? ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.onLogout();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

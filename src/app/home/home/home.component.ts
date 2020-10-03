@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     shareReplay()
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) { }
+  constructor(public alertController: AlertController ,private breakpointObserver: BreakpointObserver, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getIsMobile()
@@ -35,6 +36,29 @@ export class HomeComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Logout Confirmation',
+      message: 'Are you sure you want to logout ? ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.onLogout();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 
