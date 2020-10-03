@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
+import { SecretsService } from '../secrets.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +10,30 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private menu: MenuController, private authService: AuthService) {
+  userId : string;
+  secrets = []
+
+  constructor(private menu: MenuController, private authService: AuthService, private secretService: SecretsService) {
     console.log(`User: ${this.authService.getUserId()}`);
   }
 
   ngOnInit() {
     this.menu.close();
+    this.userId = this.authService.getUserId();
+    // this.secretService.getAllSecrets().pipe(
+    //   map(s => s.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) ),
+    // ).subscribe((res) => {
+    //   this.secrets = res;
+    //   console.log(`FEEED SECRETS: ${this.secrets}`);
+    // })
+
+    this.secretService.getSecretById(this.userId).subscribe((res) => {
+      this.secrets = res["secrets"]
+      console.log(this.secrets);
+    })
   }
+
+
+
 
 }

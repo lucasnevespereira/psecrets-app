@@ -26,4 +26,10 @@ export class SecretsService {
   getAllSecrets() {
     return this.http.get<SecretResponse[]>(this.rootUrl);
   }
+
+  getSecretById(userId: string) {
+    return this.http.get<any[]>(`${this.rootUrl}/userSecrets/${userId}`);
+  }
+
+
 }

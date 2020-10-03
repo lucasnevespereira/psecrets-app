@@ -17,6 +17,7 @@ export class FeedComponent implements OnInit {
     this.secretService.getAllSecrets().pipe(
       map(s => s.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) ),
     ).subscribe((res) => {
+      console.log(res);
       this.secrets = res;
       console.log(`FEEED SECRETS: ${this.secrets}`);
     })

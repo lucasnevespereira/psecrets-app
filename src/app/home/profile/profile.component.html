@@ -1,2 +1,12 @@
-<p>Profile works</p>
+<main>
+<section>
+  <div class="feed">
+    <h2>My Secrets </h2>
+      <div class="feed__secret" *ngFor="let secret of secrets" >
+        <p> {{ secret.content }} </p>
+      </div>
+  </div>
+</section>
+</main>
+
 
