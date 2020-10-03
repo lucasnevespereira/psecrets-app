@@ -31,5 +31,9 @@ export class SecretsService {
     return this.http.get<any[]>(`${this.rootUrl}/userSecrets/${userId}`);
   }
 
+  deleteSecret(secretId: string) {
+    return this.http.delete(`${this.rootUrl}/${secretId}`);
+  }
+
 
 }

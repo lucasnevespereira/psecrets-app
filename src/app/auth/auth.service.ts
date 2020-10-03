@@ -77,6 +77,7 @@ export class AuthService {
     const authData: AuthData = {email: email, password: password};
     this.http.post(`${this.rootUrl}signup`, authData).subscribe(response => {
       console.log(response);
+      this.login(email, password);
     })
   }
 

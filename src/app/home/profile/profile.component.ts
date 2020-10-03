@@ -26,6 +26,13 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  onDeleteSecret(secretId: string) {
+    this.secretService.deleteSecret(secretId).subscribe(res => {
+      console.log(res);
+    });
+    window.location.reload();
+  }
+
 
   async presentAlertConfirm(secretId : string) {
     const alert = await this.alertController.create({
@@ -37,11 +44,12 @@ export class ProfileComponent implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
+          
           }
         }, {
           text: 'Yes',
           handler: () => {
-        
+            this.onDeleteSecret(secretId);
           }
         }
       ]
