@@ -29,5 +29,14 @@ body {
 }
 
 .alert {
+  --background: var(--main-bg);
   --color: #e5e5e5 !important;
+}
+
+ion-alert {
+  --background: var(--main-bg);
+}
+
+ion-toolbar {
+  --background: var(--main-bg);
 }
