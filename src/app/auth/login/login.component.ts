@@ -41,6 +41,10 @@ export class LoginComponent implements OnInit {
     
   }
 
+  isLoading() : boolean {
+    return this.authService.getIsLoading();
+  }
+
 
   onClickIcon() {
     this.showPassword = !this.showPassword;

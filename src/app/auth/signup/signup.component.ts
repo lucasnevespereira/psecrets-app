@@ -44,6 +44,10 @@ export class SignupComponent implements OnInit {
     
   }
 
+  isLoading() : boolean {
+    return this.authService.getIsLoading();
+  }
+
   onClickIcon() {
     this.showPassword = !this.showPassword;
   }

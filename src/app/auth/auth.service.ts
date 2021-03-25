@@ -18,6 +18,7 @@ export class AuthService {
   private tokenTimer: NodeJS.Timer;
   private authStatusListener = new Subject<boolean>();
   isAuth: boolean = false;
+  isLoading : boolean = false;
   rootUrl: string = environment.apiUrl + "/auth/"
   private userId: string;
 
@@ -39,7 +40,12 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
+  getIsLoading() {
+    return this.isLoading;
+  }
+
   login(email: string, password: string) {
+    this.isLoading = true;
     const authData: AuthData = {email: email, password: password};
     this.http.post<{token: string, expiresIn: number, userId: string}>(`${this.rootUrl}login`, authData).subscribe(response => {
       console.log(response);
@@ -54,6 +60,7 @@ export class AuthService {
         const now = new Date();
         const expirationDate =  new Date(now.getTime() + expirationInDuration * 1000);
         this.saveAuthData(token, expirationDate, this.userId);
+        this.isLoading = false;
         this.router.navigate(['/']);
       }
     })
@@ -76,6 +83,7 @@ export class AuthService {
   }
 
   createUser(email: string, password: string) {
+    this.isLoading = true;
     const authData: AuthData = {email: email, password: password};
     this.http.post(`${this.rootUrl}signup`, authData).subscribe(response => {
       console.log(response);

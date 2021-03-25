@@ -3,7 +3,6 @@
     <img src="assets/logo.svg" alt="Parrot Logo" />
     <h3 class="title">Parrot Secrets</h3>
   </div>
-
   <form [formGroup]="authForm" (ngSubmit)="onLogin()">
     <div class="form-switch">
       <div class="form-switch__item active">
@@ -41,7 +40,9 @@
         LOGIN
       </button>
     </div>
-
+    <div class="loading">
+      <ion-spinner *ngIf="isLoading()" name="bubbles"></ion-spinner>
+    </div>
   </form>
 
 
